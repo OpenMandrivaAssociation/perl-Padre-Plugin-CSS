@@ -1,11 +1,11 @@
 %define upstream_name    Padre-Plugin-CSS
-%define upstream_version 0.08
+%define upstream_version 0.10
 
 Name:       perl-%{upstream_name}
 Version:    %perl_convert_version %{upstream_version}
 Release:    %mkrel 1
 
-Summary:    L<Padre> and CSS
+Summary:    Padre and CSS
 License:    GPL+ or Artistic
 Group:      Development/Perl
 Url:        http://search.cpan.org/dist/%{upstream_name}
@@ -20,22 +20,23 @@ BuildArch: noarch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
 
 %description
-no description found
+From Padre:
+- use CSS::Minifier::XS to minify css
+- use WebService::Validator::CSS::W3C to validate the CSS
 
 %prep
 %setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS=vendor
-
-%{make}
+%{__perl} Build.PL installdirs=vendor
+./Build
 
 %check
-%{make} test
+./Build test
 
 %install
-rm -rf %buildroot
-%makeinstall_std
+%{__rm} -rf %{buildroot}
+./Build install destdir=%{buildroot}
 
 %clean
 rm -rf %buildroot
@@ -45,5 +46,3 @@ rm -rf %buildroot
 %doc Changes README
 %{_mandir}/man3/*
 %perl_vendorlib/*
-
-
