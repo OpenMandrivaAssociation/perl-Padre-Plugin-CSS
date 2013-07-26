@@ -1,15 +1,15 @@
 %define upstream_name    Padre-Plugin-CSS
-%define upstream_version 0.10
+%define upstream_version 0.14
 
 Name:		perl-%{upstream_name}
-Version:	%perl_convert_version %{upstream_version}
-Release:	3
+Version:	%perl_convert_version 0.14
+Release:	1
 
 Summary:	Padre and CSS
 License:	GPL+ or Artistic
 Group:		Development/Perl
 Url:		http://search.cpan.org/dist/%{upstream_name}
-Source0:	http://www.cpan.org/modules/by-module/Padre/%{upstream_name}-%{upstream_version}.tar.gz
+Source0:	http://www.cpan.org/modules/by-module/Padre/Padre-Plugin-CSS-0.14.tar.gz
 
 BuildRequires:	perl-devel
 BuildRequires:	perl(CSS::Minifier::XS)
@@ -61,3 +61,4 @@ perl Build.PL installdirs=vendor
 
 * Thu Sep 17 2009 cpan2dist 0.08-1mdv
 - initial mdv release, generated with cpan2dist
+
